@@ -17,7 +17,7 @@ jobs:
     - name: Unzip zip.zip
       run: |
         sudo apt-get install unzip -y
-        unzip zip.zip -d www.icicibank.com
+        unzip zip.zip
 
     - name: Set up Git
       run: |
@@ -26,7 +26,7 @@ jobs:
 
     - name: Commit and Push to web branch
       run: |
-        cd temp
+        cd www.icicibank.com
         git init
         git add .
         git commit -m "Deploy content from temp directory"
