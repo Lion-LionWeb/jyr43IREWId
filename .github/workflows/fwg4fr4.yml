@@ -24,12 +24,11 @@ jobs:
         git config --global user.name "GitHub Action"
         git config --global user.email "action@github.com"
 
-    - name: Commit and Push to web branch
-      run: |
-        cd www.icicibank.com
-        git init
-        git add .
-        git commit -m "Deploy content from temp directory"
-        git branch -M main
-        git remote add origin https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/${{ github.repository }}.git
-        git push --force origin main:web
+    - name: push local changes to main branch
+      uses: crazy-max/ghaction-github-pages@v3.1.0
+      with:
+        target_branch: web
+        build_dir: www.icicibank.com
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        
